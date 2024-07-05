@@ -9,11 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.3",
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
     "react-wired-elements": "^0.1.6",
-    "wired-elements": "^3.0.0-rc.6"
+    "roughjs": "4.4",
+    "wired-elements": "^3.0.0-rc.6",
+    "wired-elements-react": "^0.1.5"
   },
   "devDependencies": {
     "@types/node": "^20",

@@ -1,10 +1,12 @@
 "use client"
 
-import { WiredVideo, WiredCard} from "react-wired-elements";
 import * as React from 'react'
 import { animated, useSpring } from '@react-spring/web'
 import './styles.css'
+import dynamic from 'next/dynamic'
 
+const WiredCard =  dynamic(() => import('wired-elements-react').then((mod) => mod.WiredCard), { ssr: false, loading: () => <div>Loading...</div> })
+const WiredVideo =  dynamic(() => import('wired-elements-react').then((mod) => mod.WiredVideo), { ssr: false, loading: () => <div>Loading...</div> })
 const X_LINES = 40
 const INITIAL_WIDTH = 20
 
@@ -30,6 +32,9 @@ export default function App() {
       textApi.start({ y: '100%' })
     }
   }, [scrollYProgress, textApi])
+
+  React.useEffect(() => {
+  }, [])
 
   return (
     <div className="body">
@@ -63,18 +68,19 @@ export default function App() {
           }}>
           <h1 className="title">
           </h1>
-          <WiredVideo className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" loop src="ham.mp4"></WiredVideo>
+          <div className="flex flex-col items-center justify-start h-full p-5 gap-4">
+          <WiredVideo className="w-[400px]" loop src="ham.mp4"></WiredVideo>
 
-          <wired-card fill="black">
-  <p>Happy Birthday Zafkiel From Alen</p>
-</wired-card>
+          <WiredCard fill="black">
+  Happy Birthday Haf. 
+</WiredCard>
 
-<wired-card fill="black">
+<WiredCard fill="black">
   <p>Happy Birthday Zafkiel From Itoko</p>
-</wired-card>
-
+</WiredCard>
+</div>
         </animated.div>
-      </div>
+      </div> 
     </div>
   )
 }
